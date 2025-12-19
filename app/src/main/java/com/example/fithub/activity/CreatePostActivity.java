@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.fithub.R;
-import com.example.fithub.model.Post; // Assurez-vous d'avoir créé le package model et la classe Post
+import com.example.fithub.model.Post;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -153,13 +153,25 @@ public class CreatePostActivity extends AppCompatActivity {
             return;
         }
 
+        // ================== CORRECTION APPLIQUÉE ICI ==================
+        // Le constructeur est appelé avec 5 arguments, ce qui est correct
+        // si vous avez adapté le constructeur de votre classe Post.
+        // Si votre classe Post attend les compteurs, vous devez les ajouter.
+        // Puisque nous ne savons pas quelle solution vous avez choisie,
+        // je vous donne un constructeur qui initialise TOUT.
+        // Si vous avez une erreur ici, c'est que votre classe Post a
+        // un constructeur différent.
         Post newPost = new Post(
                 currentUser.getUid(),
                 currentUser.getDisplayName(),
-                currentUser.getPhotoUrl() != null ? currentUser.getPhotoUrl().toString() : null,
-                contentText,
-                imageUrl
+                currentUser.getPhotoUrl() != null ? currentUser.getPhotoUrl().toString() : null,contentText,
+                imageUrl,
+                // On active ces lignes pour fournir les valeurs initiales
+                0, // likeCount initial
+                0  // commentCount initial
         );
+
+        // ===============================================================
 
         db.collection("posts").add(newPost)
                 .addOnSuccessListener(documentReference -> {
