@@ -2,6 +2,7 @@
 # Android Studio
 ############################
 .idea/
+.gradle
 *.iml
 .project
 .settings
