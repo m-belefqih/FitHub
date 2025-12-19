@@ -1,13 +1,3 @@
-## ⚠️ Important:
-
-Le fichier `google-services.json` n’est pas inclus dans GitHub afin de protéger les clés du projet Firebase (des raisons de sécurité).
-
-Chaque membre doit :
-1. Ouvrir Firebase Console
-2. Ajouter l’application Android avec le package : com.example.fithub
-3. Télécharger son propre google-services.json
-4. Le placer dans le dossier /app
-
 # 📱 FitHub – Fitness & Community App
 
 FitHub is an Android mobile application (Java) dedicated to **fitness tracking** and **community sharing**.  
