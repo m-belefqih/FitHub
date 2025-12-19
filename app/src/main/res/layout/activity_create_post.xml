@@ -1,6 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_primary"
+    tools:context=".activity.CreatePostActivity">
+    <!-- 1. Barre d'outils avec titre et bouton retour -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_primary"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_create_post"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/white"
+            app:title="Create Post"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- 2. Informations de l'utilisateur (photo et nom) -->
+    <ImageView
+        android:id="@+id/createpost_profile_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="@string/user_profile_picture" />
+
+    <TextView
+        android:id="@+id/createpost_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/createpost_profile_image"
+        app:layout_constraintStart_toEndOf="@id/createpost_profile_image"
+        app:layout_constraintTop_toTopOf="@id/createpost_profile_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Rizki Abdelhadi" />
+
+    <!-- 3. Champ de texte principal pour le contenu -->
+    <EditText
+        android:id="@+id/createpost_description_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:background="@null"
+        android:gravity="top"
+        android:hint="@string/share_something"
+        android:inputType="textMultiLine"
+        android:textColor="@color/white"
+        android:textColorHint="@color/grey_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/image_preview_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createpost_profile_image" />
+
+    <!-- 4. Conteneur pour prévisualiser l'image choisie -->
+    <ImageView
+        android:id="@+id/image_preview_container"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/dotted_border"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 5. Bouton flottant pour ajouter une image -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createpost_add_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@color/dark_surface_light"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@id/createpost_post_complete_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add_photo"
+        app:tint="@color/primary"
+        android:contentDescription="@string/add_image_button" />
+
+    <!-- 6. Bouton flottant pour publier -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createpost_post_complete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/primary"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_check"
+        app:tint="@color/black_primary"
+        android:contentDescription="@string/publish_post_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
