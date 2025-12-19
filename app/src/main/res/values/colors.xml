@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Primary Color (principal - boutons, accents) -->
+    <color name="primary">#BCFF31</color>
+
+    <!-- Secondary / Action color (active states) -->
+    <color name="secondary">#2563EB</color>
+
+    <!-- White -->
+    <color name="white">#FFFFFF</color>
+
+    <color name="black_primary">#1d2738</color>
+
+    <color name="red">#e83937</color>
+
+    <color name="dark_card">#1B1C19</color>
+
+    <color name="grey_text">#94978F</color>
+
+    <color name="gray">#94978F</color>
+
+    <color name="black_bottom">#201e26</color>
+
+    <color name="dark_surface_light">#3C4550</color>
+
+    <color name="grey_stroke">#4A5568</color>
+
+    <color name="success_green">#4CAF50</color>
+
+    <color name="error_red">#F44336</color>
+
+</resources>
+
