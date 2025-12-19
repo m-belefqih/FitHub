@@ -29,5 +29,15 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_for_a_people">Search for a People</string>
+    <string name="user_profile_picture">User profile picture</string>
+    <string name="like_button">Like button</string>
+    <string name="comment_button">Comment button</string>
+    <string name="_0">0</string>
+    <string name="share_something">Share something...</string>
+    <string name="add_image_button">Add image button</string>
+    <string name="publish_post_button">Publish post button</string>
+    <string name="create_a_new_post">Create a new post</string>
+
 </resources>
 
