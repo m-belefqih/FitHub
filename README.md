@@ -1,3 +1,7 @@
+# à noter que
+nous avons utilisé Google Drive au lieu de Firebase Storage pour le partage des images
+car Firebase Storage nécessite une carte bancaire pour l'authentification
+
 # 📱 FitHub – Fitness & Community App
 
 FitHub is an Android mobile application (Java) dedicated to **fitness tracking** and **community sharing**.  
@@ -22,7 +26,8 @@ It allows each user to create an account, track personal data (weight, height), 
 - **Java**
 - **Kotlin (for build)**
 - **Firebase Authentication**
-- **Firebase Cloud Firestore**
+- **Cloud Firestore**
+- **Firebase Storage**
 - **Google Material 3 Components**
 - **MVVM Architecture**
 - **GitHub (team collaboration)**
@@ -36,10 +41,10 @@ com.example.fithub
 │
 ├── activity
 │
+├── fragment
+│
 ├── adapter
-│
-├── firebase
-│
+││
 ├── model
 │
 ├── repository
