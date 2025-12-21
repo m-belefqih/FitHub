@@ -1,44 +1,57 @@
 package com.example.fithub.model;
 
-import com.google.firebase.firestore.Exclude;
-import com.google.firebase.firestore.ServerTimestamp;
-import java.util.Date;public class Post {
+import java.util.List;
 
-    // --- Champs qui seront sauvegardés dans Firestore ---
-    private String userId;
-    private String userName;
-    private String userProfileImageUrl;
-    private String contentText;
-    private String postImageUrl;
-    private int likeCount;      // Le compteur de "likes"
-    private int commentCount;   // Le compteur de "commentaires"
-    private @ServerTimestamp Date timestamp; // Firestore remplira ce champ automatiquement
+public class Post {
 
-    // --- Champs utilisés uniquement dans l'application (UI) ---
-    @Exclude
-    private boolean isLikedByCurrentUser = false;
-    @Exclude
+    // Identité du post
     private String postId;
 
-    // --- Constructeurs ---
+    // Auteur du post
+    private String userId;
 
-    // 1. Constructeur vide : OBLIGATOIRE pour que Firestore puisse lire les données
-    public Post() { }
+    // Contenu du post
+    private String content;
+    // Média (optionnel)
+    private String mediaUrl;      // Firebase Storage URL or Google Drive URL
+    private String mediaType;     // "image" | "video" | null
 
-    // 2. Le constructeur que votre CreatePostActivity essaie d'appeler
-    // Il doit accepter les 7 arguments.
-    public Post(String userId, String userName, String userProfileImageUrl, String contentText, String postImageUrl, int likeCount, int commentCount) {
+    // Statistiques
+    private long likesCount;
+    private List<String> likedBy;
+
+    private long commentsCount;
+
+    // AJOUT POUR AFFICHAGE DE POSTS
+    private String username;        // Firebase va ignorer ce champ
+    private String userImage;       // Firebase va ignorer ce champ
+
+    // Temps
+    private String createdAt;
+
+    public Post() {} // Firestore obligatoire
+
+    // Parameterized Constructor without username, userImage and likedBy
+    public Post(String postId, String userId, String content, String mediaUrl, String mediaType,
+                long likesCount, long commentsCount, String createdAt) {
+        this.postId = postId;
         this.userId = userId;
-        this.userName = userName;
-        this.userProfileImageUrl = userProfileImageUrl;
-        this.contentText = contentText;
-        this.postImageUrl = postImageUrl;
-        this.likeCount = likeCount;
-        this.commentCount = commentCount;
+        this.content = content;
+        this.mediaUrl = mediaUrl;
+        this.mediaType = mediaType;
+        this.likesCount = likesCount;
+        this.commentsCount = commentsCount;
+        this.createdAt = createdAt;
     }
 
+    // getters & setters
+    public String getPostId() {
+        return postId;
+    }
 
-    // --- Getters et Setters (OBLIGATOIRES pour Firestore) ---
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
 
     public String getUserId() {
         return userId;
@@ -48,81 +61,75 @@ import java.util.Date;public class Post {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getContent() {
+        return content;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getUserProfileImageUrl() {
-        return userProfileImageUrl;
+    public String getMediaUrl() {
+        return mediaUrl;
     }
 
-    public void setUserProfileImageUrl(String userProfileImageUrl) {
-        this.userProfileImageUrl = userProfileImageUrl;
+    public void setMediaUrl(String mediaUrl) {
+        this.mediaUrl = mediaUrl;
     }
 
-    public String getContentText() {
-        return contentText;
+    public String getMediaType() {
+        return mediaType;
     }
 
-    public void setContentText(String contentText) {
-        this.contentText = contentText;
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
-    public String getPostImageUrl() {
-        return postImageUrl;
+    public long getLikesCount() {
+        return likesCount;
     }
 
-    public void setPostImageUrl(String postImageUrl) {
-        this.postImageUrl = postImageUrl;
+    public void setLikesCount(long likesCount) {
+        this.likesCount = likesCount;
     }
 
-    public int getLikeCount() {
-        return likeCount;
+    public long getCommentsCount() {
+        return commentsCount;
     }
 
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
+    public void setCommentsCount(long commentsCount) {
+        this.commentsCount = commentsCount;
     }
 
-    public int getCommentCount() {
-        return commentCount;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCommentCount(int commentCount) {
-        this.commentCount = commentCount;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public String getUsername() {
+        return username;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    // --- Getters et Setters pour les champs non sauvegardés ---
-
-    @Exclude
-    public boolean isLikedByCurrentUser() {
-        return isLikedByCurrentUser;
+    public String getUserImage() {
+        return userImage;
     }
 
-    @Exclude
-    public void setLikedByCurrentUser(boolean likedByCurrentUser) {
-        isLikedByCurrentUser = likedByCurrentUser;
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 
-    @Exclude
-    public String getPostId() {
-        return postId;
+    public List<String> getLikedBy() {
+        return likedBy;
     }
 
-    @Exclude
-    public void setPostId(String postId) {
-        this.postId = postId;
+    public void setLikedBy(List<String> likedBy) {
+        this.likedBy = likedBy;
     }
 }
