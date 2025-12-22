@@ -67,6 +67,9 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.glide)
 
+    // JSON Parsing
+    implementation("com.google.code.gson:gson:2.10.1")
+
     // Tests
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
