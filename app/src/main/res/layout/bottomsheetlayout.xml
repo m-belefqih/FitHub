@@ -43,7 +43,7 @@
 
     <!-- reste du layout inchangé -->
     <LinearLayout
-        android:id="@+id/layoutVideo"
+        android:id="@+id/layoutExercises"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gym"
+            android:text="Exercises Muscles"
             android:textColor="@color/primary"
             android:layout_marginLeft="30dp"
             android:textSize="16sp"/>
@@ -66,7 +66,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutShorts"
+        android:id="@+id/layoutFullBody"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Walk &amp; Run"
+            android:text="Full Body"
             android:textColor="@color/primary"
             android:layout_marginLeft="30dp"
             android:textSize="16sp"/>
