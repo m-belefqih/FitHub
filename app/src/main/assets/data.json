@@ -1,0 +1,336 @@
+[
+  {
+    "id": "1",
+    "name": "Chest",
+    "image": "chest_img",
+    "exercises": [
+      {
+        "name": "Bench Press",
+        "image": "bench_press_img",
+        "difficulty": "Hard",
+        "calories": "120 kcal",
+        "duration": 60,
+        "instructions": "Lie on the bench. Grip the bar slightly wider than shoulder-width. Lower the bar to your chest, then push back up."
+      },
+      {
+        "name": "Push Ups",
+        "image": "pushup_img",
+        "difficulty": "Easy",
+        "calories": "45 kcal",
+        "duration": 45,
+        "instructions": "Keep your body in a straight line. Lower your chest to the floor and push back up."
+      },
+      {
+        "name": "Incline Dumbbell Press",
+        "image": "incline_press_img",
+        "difficulty": "Medium",
+        "calories": "100 kcal",
+        "duration": 50,
+        "instructions": "Set bench to 45 degrees. Press dumbbells up from chest level until arms are extended."
+      },
+      {
+        "name": "Cable Flys",
+        "image": "cable_fly_img",
+        "difficulty": "Medium",
+        "calories": "80 kcal",
+        "duration": 45,
+        "instructions": "Stand between pulleys. Pull handles together in front of chest with a slight bend in elbows."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Back",
+    "image": "back_img",
+    "exercises": [
+      {
+        "name": "Pull Ups",
+        "image": "pullup_img",
+        "difficulty": "Hard",
+        "calories": "100 kcal",
+        "duration": 60,
+        "instructions": "Grip the bar wider than shoulders. Pull your body up until your chin is over the bar."
+      },
+      {
+        "name": "Bent Over Barbell Row",
+        "image": "barbell_row_img",
+        "difficulty": "Hard",
+        "calories": "130 kcal",
+        "duration": 60,
+        "instructions": "Bend at hips, keeping back straight. Pull barbell to your lower chest/upper abs."
+      },
+      {
+        "name": "Lat Pulldown",
+        "image": "lat_pulldown_img",
+        "difficulty": "Medium",
+        "calories": "90 kcal",
+        "duration": 50,
+        "instructions": "Sit at machine. Pull the bar down to your upper chest while squeezing your shoulder blades."
+      },
+      {
+        "name": "Seated Cable Row",
+        "image": "cable_row_img",
+        "difficulty": "Medium",
+        "calories": "95 kcal",
+        "duration": 50,
+        "instructions": "Sit with knees slightly bent. Pull handle to your stomach, keeping back straight."
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Shoulders",
+    "image": "shoulders_img",
+    "exercises": [
+      {
+        "name": "Overhead Press",
+        "image": "overhead_press_img",
+        "difficulty": "Hard",
+        "calories": "110 kcal",
+        "duration": 60,
+        "instructions": "Stand with feet shoulder-width apart. Press the barbell from shoulders up over your head."
+      },
+      {
+        "name": "Lateral Raises",
+        "image": "lat_raise_img",
+        "difficulty": "Medium",
+        "calories": "60 kcal",
+        "duration": 45,
+        "instructions": "Hold dumbbells at sides. Raise arms out to the side until parallel with the floor."
+      },
+      {
+        "name": "Face Pulls",
+        "image": "face_pull_img",
+        "difficulty": "Medium",
+        "calories": "70 kcal",
+        "duration": 45,
+        "instructions": "Using a rope attachment, pull the weight towards your forehead, flaring elbows out."
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Biceps",
+    "image": "biceps_img",
+    "exercises": [
+      {
+        "name": "Barbell Curl",
+        "image": "barbell_curl_img",
+        "difficulty": "Medium",
+        "calories": "80 kcal",
+        "duration": 45,
+        "instructions": "Stand straight. Curl the barbell towards your chest, keeping elbows pinned to sides."
+      },
+      {
+        "name": "Hammer Curls",
+        "image": "hammer_curl_img",
+        "difficulty": "Easy",
+        "calories": "60 kcal",
+        "duration": 45,
+        "instructions": "Hold dumbbells with palms facing each other. Curl weights up without rotating wrists."
+      },
+      {
+        "name": "Preacher Curl",
+        "image": "preacher_curl_img",
+        "difficulty": "Medium",
+        "calories": "75 kcal",
+        "duration": 45,
+        "instructions": "Sit at preacher bench. Curl the weight up while keeping upper arms firmly on the pad."
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Triceps",
+    "image": "triceps_img",
+    "exercises": [
+      {
+        "name": "Tricep Dips",
+        "image": "dips_img",
+        "difficulty": "Hard",
+        "calories": "100 kcal",
+        "duration": 60,
+        "instructions": "Lower your body on parallel bars until elbows are at 90 degrees, then push up."
+      },
+      {
+        "name": "Skullcrushers",
+        "image": "skullcrusher_img",
+        "difficulty": "Medium",
+        "calories": "85 kcal",
+        "duration": 50,
+        "instructions": "Lie on bench. Lower EZ-bar to forehead by bending elbows, then extend arms."
+      },
+      {
+        "name": "Cable Pushdowns",
+        "image": "pushdown_img",
+        "difficulty": "Easy",
+        "calories": "70 kcal",
+        "duration": 45,
+        "instructions": "Push the cable attachment down until arms are fully extended, keeping elbows tight."
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Quadriceps",
+    "image": "quads_img",
+    "exercises": [
+      {
+        "name": "Barbell Squat",
+        "image": "squat_img",
+        "difficulty": "Hard",
+        "calories": "150 kcal",
+        "duration": 60,
+        "instructions": "Place bar on upper back. Squat down until thighs are parallel to floor, then drive up."
+      },
+      {
+        "name": "Leg Press",
+        "image": "leg_press_img",
+        "difficulty": "Medium",
+        "calories": "120 kcal",
+        "duration": 60,
+        "instructions": "Sit in machine. Lower the platform until knees are at 90 degrees, then press back up."
+      },
+      {
+        "name": "Walking Lunges",
+        "image": "lunge_img",
+        "difficulty": "Medium",
+        "calories": "110 kcal",
+        "duration": 60,
+        "instructions": "Step forward with one leg, lowering hips until both knees are bent at 90 degrees."
+      },
+      {
+        "name": "Leg Extensions",
+        "image": "leg_ext_img",
+        "difficulty": "Easy",
+        "calories": "70 kcal",
+        "duration": 45,
+        "instructions": "Sit in machine. Extend legs until straight, focusing on squeezing the quads."
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Hamstrings",
+    "image": "hamstring_img",
+    "exercises": [
+      {
+        "name": "Romanian Deadlift",
+        "image": "rdl_img",
+        "difficulty": "Hard",
+        "calories": "140 kcal",
+        "duration": 60,
+        "instructions": "Hinge at hips with slight knee bend. Lower bar along legs until stretch is felt, then pull up."
+      },
+      {
+        "name": "Seated Leg Curl",
+        "image": "leg_curl_img",
+        "difficulty": "Easy",
+        "calories": "75 kcal",
+        "duration": 45,
+        "instructions": "Sit in machine. Curl legs under the pad towards your glutes."
+      },
+      {
+        "name": "Lying Leg Curl",
+        "image": "lying_curl_img",
+        "difficulty": "Medium",
+        "calories": "80 kcal",
+        "duration": 50,
+        "instructions": "Lie face down. Curl heels towards glutes using the machine pad."
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Glutes",
+    "image": "glutes_img",
+    "exercises": [
+      {
+        "name": "Hip Thrusts",
+        "image": "hip_thrust_img",
+        "difficulty": "Hard",
+        "calories": "130 kcal",
+        "duration": 60,
+        "instructions": "Back against bench, bar on hips. Thrust hips upward until body is flat, squeeze glutes."
+      },
+      {
+        "name": "Glute Bridges",
+        "image": "glute_bridge_img",
+        "difficulty": "Easy",
+        "calories": "60 kcal",
+        "duration": 45,
+        "instructions": "Lie on back, knees bent. Lift hips off floor until body forms straight line."
+      },
+      {
+        "name": "Cable Kickbacks",
+        "image": "kickback_img",
+        "difficulty": "Medium",
+        "calories": "80 kcal",
+        "duration": 45,
+        "instructions": "Attach ankle cuff to cable. Kick leg back and up, squeezing the glute at the top."
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Calves",
+    "image": "calves_img",
+    "exercises": [
+      {
+        "name": "Standing Calf Raise",
+        "image": "standing_calf_img",
+        "difficulty": "Easy",
+        "calories": "60 kcal",
+        "duration": 45,
+        "instructions": "Stand on edge of step. Lower heels down, then raise up onto toes as high as possible."
+      },
+      {
+        "name": "Seated Calf Raise",
+        "image": "seated_calf_img",
+        "difficulty": "Medium",
+        "calories": "50 kcal",
+        "duration": 45,
+        "instructions": "Sit at machine with pads on knees. Raise heels by extending ankles."
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Abs",
+    "image": "abs_img",
+    "exercises": [
+      {
+        "name": "Plank",
+        "image": "plank_img",
+        "difficulty": "Medium",
+        "calories": "50 kcal",
+        "duration": 60,
+        "instructions": "Hold body in straight line resting on forearms and toes. Keep core tight."
+      },
+      {
+        "name": "Crunches",
+        "image": "crunch_img",
+        "difficulty": "Easy",
+        "calories": "40 kcal",
+        "duration": 45,
+        "instructions": "Lie on back. Curl upper body towards knees, squeezing abs. Do not pull on neck."
+      },
+      {
+        "name": "Hanging Leg Raises",
+        "image": "leg_raise_img",
+        "difficulty": "Hard",
+        "calories": "80 kcal",
+        "duration": 45,
+        "instructions": "Hang from pull-up bar. Raise legs until parallel to floor (or higher) without swinging."
+      },
+      {
+        "name": "Russian Twists",
+        "image": "russian_twist_img",
+        "difficulty": "Medium",
+        "calories": "65 kcal",
+        "duration": 50,
+        "instructions": "Sit with feet off ground. Twist torso side to side, touching floor with hands/weight."
+      }
+    ]
+  }
+]
