@@ -26,9 +26,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitHub">
         <activity
-            android:name=".activity.CreatePostActivity"
-            android:windowSoftInputMode="adjustResize"
+            android:name=".activity.WorkoutSessionActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.TrainingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ExerciseListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WorkoutListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MuscleListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CreatePostActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.EmailVerificationActivity"
             android:exported="false" />
