@@ -1,6 +1,7 @@
 package com.example.fithub.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -146,26 +147,29 @@ public class MainActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheetlayout);
 
-        LinearLayout videoLayout = dialog.findViewById(R.id.layoutVideo);
-        LinearLayout shortsLayout = dialog.findViewById(R.id.layoutShorts);
+        LinearLayout layyoutExercises = dialog.findViewById(R.id.layoutExercises);
+        LinearLayout layoutFullBody = dialog.findViewById(R.id.layoutFullBody);
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
 
-        videoLayout.setOnClickListener(new View.OnClickListener() {
+        layyoutExercises.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.this,"Upload a Video is clicked",Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(MainActivity.this, MuscleListActivity.class));
 
             }
         });
 
-        shortsLayout.setOnClickListener(new View.OnClickListener() {
+        layoutFullBody.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.this,"Create a short is Clicked",Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(MainActivity.this, WorkoutListActivity.class));
+
 
             }
         });
