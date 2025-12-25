@@ -26,6 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitHub">
         <activity
+            android:name=".activity.UpdateProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.WorkoutSessionActivity"
             android:exported="false" />
         <activity
