@@ -64,8 +64,12 @@
                 android:layout_height="wrap_content"
                 android:hint="Username"
                 style="@style/CustomFloatingHint"
-                app:boxStrokeColor="@color/grey_stroke"
+                app:boxStrokeColor="@color/primary"
                 app:boxStrokeWidth="2dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
                 app:boxStrokeWidthFocused="2.5dp"
                 app:boxBackgroundColor="@color/dark_surface_light">
 
@@ -85,6 +89,10 @@
                 style="@style/CustomFloatingHint"
                 app:boxStrokeColor="@color/primary"
                 app:boxStrokeWidth="2dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
                 app:boxStrokeWidthFocused="2.5dp"
                 app:boxBackgroundColor="@color/dark_surface_light"
                 android:layout_marginTop="12dp">
@@ -106,6 +114,10 @@
                 style="@style/CustomFloatingHint"
                 app:boxStrokeColor="@color/primary"
                 app:boxStrokeWidth="2dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
                 app:boxStrokeWidthFocused="2.5dp"
                 app:boxBackgroundColor="@color/dark_surface_light"
                 app:endIconMode="password_toggle"
@@ -129,6 +141,10 @@
                 style="@style/CustomFloatingHint"
                 app:boxStrokeColor="@color/primary"
                 app:boxStrokeWidth="2dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
                 app:boxStrokeWidthFocused="2.5dp"
                 app:boxBackgroundColor="@color/dark_surface_light"
                 android:layout_marginTop="12dp"
@@ -201,6 +217,10 @@
                     app:boxStrokeWidthFocused="2.5dp"
                     app:boxBackgroundColor="@color/dark_surface_light"
                     android:layout_weight="1"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
                     android:layout_marginEnd="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -222,6 +242,10 @@
                     app:boxStrokeWidthFocused="2.5dp"
                     app:boxBackgroundColor="@color/dark_surface_light"
                     android:layout_weight="1"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
                     android:layout_marginStart="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -251,7 +275,7 @@
                 app:cardBackgroundColor="@color/dark_surface_light"
                 app:strokeColor="@color/grey_stroke"
                 app:strokeWidth="1dp"
-                app:cardCornerRadius="8dp"
+                app:cardCornerRadius="12dp"
                 android:clickable="true"
                 android:focusable="true">
 

@@ -25,6 +25,10 @@
         style="@style/CustomFloatingHint"
         app:boxStrokeColor="@color/primary"
         app:boxStrokeWidth="2dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
         app:boxStrokeWidthFocused="2.5dp"
         app:boxBackgroundColor="@color/dark_surface_light">
 
@@ -51,6 +55,10 @@
             style="@style/CustomFloatingHint"
             app:boxStrokeColor="@color/primary"
             app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
             app:boxStrokeWidthFocused="2.5dp"
             app:boxBackgroundColor="@color/dark_surface_light"
             app:endIconMode="password_toggle"
