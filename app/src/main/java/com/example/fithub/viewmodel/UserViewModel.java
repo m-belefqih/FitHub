@@ -35,6 +35,9 @@ public class UserViewModel extends ViewModel {
     // Représente l'état de l'erreur de récupération du profil
     private MutableLiveData<String> profileError = new MutableLiveData<>();
 
+    // Nouvel état pour la mise à jour
+    private MutableLiveData<String> updateResult = new MutableLiveData<>();
+
     public UserViewModel() {
         userRepository = new UserRepository();
 
@@ -76,6 +79,10 @@ public class UserViewModel extends ViewModel {
         return profileError;
     }
 
+    public LiveData<String> getUpdateResult() {
+        return updateResult;
+    }
+
 
     // --- ÉVÉNEMENTS ---
     // Ces méthodes publiques sont appelées par l'UI pour déclencher des actions
@@ -99,6 +106,26 @@ public class UserViewModel extends ViewModel {
             public void onFailure(String message) {
                 // Met à jour l'état de loginResult avec un message d'erreur.
                 loginResult.postValue(message);
+            }
+        });
+    }
+
+    /**
+     * Lance la mise à jour des infos texte
+     * @param user L'objet utilisateur contenant les informations à mettre à jour.
+     */
+    public void updateProfile(User user) {
+        userRepository.updateProfileData(user, new UserRepository.AuthCallback() {
+            @Override
+            public void onSuccess() {
+                updateResult.postValue("success");
+                // On met à jour le profil local pour que les autres écrans soient au courant
+                userProfile.postValue(user);
+            }
+
+            @Override
+            public void onFailure(String message) {
+                updateResult.postValue(message);
             }
         });
     }
