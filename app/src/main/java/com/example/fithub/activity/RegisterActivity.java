@@ -225,10 +225,14 @@ public class RegisterActivity extends AppCompatActivity {
             // Gestion de l'URI de l'image
             if (selectedImageUri != null) {
                 // Appelle la NOUVELLE méthode qui déclenche l'upload vers Firebase Storage
-                userViewModel.register(user, password, selectedImageUri);
+                // userViewModel.register(user, password, selectedImageUri);
+
+                // Appelle la méthode pour l'inscription sans image
+                userViewModel.register(user, password);
+
             } else {
                 // Appelle l'ancienne méthode pour l'inscription sans image
-                userViewModel.register(user, password);
+                // userViewModel.register(user, password);
             }
         });
 
