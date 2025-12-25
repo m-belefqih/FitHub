@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="220dp"
@@ -8,22 +10,32 @@
     android:padding="26dp"
     android:background="@drawable/headerbkg">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/aklogo"/>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_nav_profile"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:padding="2dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/coach"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/primary"
+        app:shapeAppearanceOverlay="@style/CircleImage" />
 
     <TextView
+        android:id="@+id/tv_nav_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android Knowledge"
+        android:layout_marginTop="3dp"
+        android:text="Username"
         android:textColor="@color/black_primary"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="18sp"/>
 
     <TextView
+        android:id="@+id/tv_nav_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="contact@androidknowledge.com"
+        android:text="contact@fithub.com"
         android:textColor="@color/black_primary"
         android:textSize="14sp"
         android:layout_marginBottom="16dp"/>
