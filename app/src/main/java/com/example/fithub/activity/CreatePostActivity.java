@@ -40,7 +40,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
         viewModel.getPostSuccess().observe(this, success -> {
             if (Boolean.TRUE.equals(success)) {
-                Toast.makeText(this, "Post published", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Post published successfully", Toast.LENGTH_SHORT).show();
                 finish(); // retour au Feed
             }
         });
