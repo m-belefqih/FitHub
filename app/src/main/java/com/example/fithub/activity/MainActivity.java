@@ -11,14 +11,18 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.example.fithub.R;
 import com.example.fithub.databinding.ActivityMainBinding;
 import com.example.fithub.fragment.ChatFragment;
@@ -40,6 +44,36 @@ public class MainActivity extends AppCompatActivity {
         // 1. Initialisation de View Binding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        View headerView = binding.navView.getHeaderView(0);
+
+        ImageView imgProfile = headerView.findViewById(R.id.img_nav_profile);
+        TextView tvUsername = headerView.findViewById(R.id.tv_nav_username);
+        TextView tvEmail = headerView.findViewById(R.id.tv_nav_email);
+
+        UserViewModel userViewModel =
+                new ViewModelProvider(this).get(UserViewModel.class);
+
+
+        userViewModel.getUserProfile().observe(this, user -> {
+
+            if (user == null) return;
+
+            tvUsername.setText(user.getUsername());
+            tvEmail.setText(user.getEmail());
+
+            if (user.getImage() != null && !user.getImage().isEmpty()) {
+                Glide.with(this)
+                        .load(convertDriveUrl(user.getImage()))
+                        .placeholder(R.drawable.coach)
+                        .circleCrop()
+                        .into(imgProfile);
+            } else {
+                imgProfile.setImageResource(R.drawable.coach);
+            }
+        });
+
+        userViewModel.fetchUserProfile();
 
         setSupportActionBar(binding.toolbar);
 
@@ -83,13 +117,13 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new HomeFragment());
 
             } else if (id == R.id.nav_settings) {
-                Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
 
             } else if (id == R.id.nav_share) {
                 Toast.makeText(this, "Share clicked", Toast.LENGTH_SHORT).show();
 
             } else if (id == R.id.nav_about) {
-                Toast.makeText(this, "About clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "About US clicked", Toast.LENGTH_SHORT).show();
 
             } else if (id == R.id.nav_notifications) {
                 Toast.makeText(this, "Notifications clicked", Toast.LENGTH_SHORT).show();
@@ -100,7 +134,10 @@ public class MainActivity extends AppCompatActivity {
 
         replaceFragment(new HomeFragment());
 
-        binding.bottomNavigationView.setBackground(null);
+        binding.bottomNavigationView.setBackgroundColor(
+                ContextCompat.getColor(this, R.color.black_primary)
+        );
+
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             int itemId = item.getItemId(); // Récupérer l'ID de l'élément cliqué une seule fois
@@ -133,8 +170,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private String convertDriveUrl(String url) {
+        return url.replace("file/d/", "uc?export=view&id=")
+                .replace("/view?usp=sharing", "");
+    }
+
     // Outside onCreate method
-    private  void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
