@@ -45,14 +45,16 @@
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profile_image"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
-                        android:background="@drawable/circle_background"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/userprofile"
-                        android:layout_gravity="center_horizontal" />
+                        android:src="@drawable/coach"
+                        android:layout_gravity="center_horizontal"
+                        app:strokeWidth="2dp"
+                        app:strokeColor="@color/primary"
+                        app:shapeAppearanceOverlay="@style/CircleImage"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -129,6 +131,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/text_weight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Weight - 60 kg"
@@ -136,6 +139,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
+                                android:id="@+id/text_birthday"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
@@ -152,6 +156,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/text_height"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Height - 165 cm"
@@ -159,6 +164,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
+                                android:id="@+id/text_gender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
@@ -182,6 +188,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <!-- Account Settings -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -317,7 +324,7 @@
             android:orientation="vertical"
             android:background="@drawable/card_background"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="20dp"
             android:elevation="4dp">
 
             <!-- Notifications -->
@@ -351,6 +358,9 @@
                     android:checked="true" />
             </LinearLayout>
 
+            <View android:layout_width="match_parent" android:layout_height="0.5dp"
+                android:background="#2F302E" android:layout_marginStart="60dp"/>
+
             <!-- Logout -->
             <LinearLayout
                 android:id="@+id/item_logout"
@@ -376,6 +386,39 @@
                     android:textColor="#FF4444"
                     android:textSize="16sp" />
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingBottom="24dp"
+            android:paddingTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Version 1.0.0"
+                android:textColor="@color/primary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:alpha="0.9" />
+
+            <TextView
+                android:id="@+id/tv_copyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="© 2025 FitHub Inc. All rights reserved."
+                android:textColor="#80FFFFFF"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
