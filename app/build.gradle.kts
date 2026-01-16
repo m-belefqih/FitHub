@@ -77,6 +77,8 @@ dependencies {
 
     // JSON Parsing
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
     // Tests
     testImplementation(libs.junit)

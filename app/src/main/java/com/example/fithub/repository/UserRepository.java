@@ -251,6 +251,18 @@ public class UserRepository {
     }
 
     /**
+     * Met à jour uniquement les données texte de l'utilisateur dans Firestore.
+     */
+    public void updateProfileData(User user, AuthCallback callback) {
+        if (user == null || user.getUid() == null) {
+            callback.onFailure("Utilisateur invalide");
+            return;
+        }
+        // On réutilise votre méthode existante qui enregistre la Map dans Firestore
+        saveUserToFirestore(user, callback);
+    }
+
+    /**
      * Déconnecte l'utilisateur actuel de Firebase Auth.
      */
     public void logout() {
