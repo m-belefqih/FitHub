@@ -4,148 +4,140 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fithub.R;
 import com.example.fithub.model.Messages;
 import com.example.fithub.model.User;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class ChatFragment extends Fragment {
 
-    private RecyclerView chatList;
+    private LinearLayout chatContainer;
+    private ScrollView chatScroll;          // ← Added this
+    private TextInputEditText etMessage;
+    private View btnSend;
+    private TextView tvChatUser;
+    private ImageView imgChatUser;
+
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference messagesRef, usersRef;
+    private DatabaseReference messagesRef, mirroredRef, usersRef;
     private String currentUserId;
+    private String otherUserId = "COACH_UID_HERE"; // ← Replace with real coach UID
 
-    private FirebaseRecyclerAdapter<Messages, ChatViewHolder> adapter;
-
-    public ChatFragment() {
-        // Required empty public constructor
-    }
+    public ChatFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chat, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_chat_detail, container, false);
 
-        // Find RecyclerView (make sure you have this ID in fragment_chat.xml)
-        chatList = view.findViewById(R.id.chat_list);
-        chatList.setHasFixedSize(true);
+        // Your views
+        chatContainer = view.findViewById(R.id.chatContainer);
+        chatScroll = view.findViewById(R.id.chatScroll);         // ← Find the ScrollView
+        etMessage = view.findViewById(R.id.etMessage);
+        btnSend = view.findViewById(R.id.btnSend);
+        tvChatUser = view.findViewById(R.id.tvChatUser);
+        imgChatUser = view.findViewById(R.id.imgChatUser);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setReverseLayout(true);      // Newest chats at top
-        layoutManager.setStackFromEnd(true);
-        chatList.setLayoutManager(layoutManager);
-
-        // Firebase setup
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserId = firebaseAuth.getCurrentUser().getUid();
 
-        messagesRef = FirebaseDatabase.getInstance().getReference()
-                .child("Messages")
-                .child(currentUserId);
+        // TODO: Replace with actual coach UID (or pass via arguments later)
+        otherUserId = "replace_with_coach_uid";
 
-        usersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        // Firebase references
+        messagesRef = FirebaseDatabase.getInstance().getReference("Messages")
+                .child(currentUserId).child(otherUserId);
+
+        mirroredRef = FirebaseDatabase.getInstance().getReference("Messages")
+                .child(otherUserId).child(currentUserId);
+
+        usersRef = FirebaseDatabase.getInstance().getReference("Users").child(otherUserId);
+
+        // Load coach profile
+        usersRef.get().addOnSuccessListener(snapshot -> {
+            if (snapshot.exists()) {
+                User user = snapshot.getValue(User.class);
+                if (user != null) {
+                    tvChatUser.setText(user.getUsername() != null ? user.getUsername() : "Coach");
+                    String image = user.getImage();
+                    if (image != null && !image.isEmpty()) {
+                        Picasso.get().load(image).placeholder(R.drawable.userprofile).into(imgChatUser);
+                    }
+                }
+            }
+        });
+
+        // Send message
+        btnSend.setOnClickListener(v -> sendMessage());
+
+        // Load existing + new messages
+        loadMessages();
 
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        setupAdapter();
-        adapter.startListening();
+    private void sendMessage() {
+        String text = etMessage.getText().toString().trim();
+        if (text.isEmpty()) return;
+
+        String time = String.valueOf(System.currentTimeMillis());
+
+        Messages msg = new Messages(currentUserId, otherUserId, text, time);
+
+        String key = messagesRef.push().getKey();
+
+        // Mirror to both users
+        messagesRef.child(key).setValue(msg);
+        mirroredRef.child(key).setValue(msg);
+
+        etMessage.setText("");
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (adapter != null) {
-            adapter.stopListening();
-        }
-    }
-
-    private void setupAdapter() {
-        FirebaseRecyclerOptions<Messages> options =
-                new FirebaseRecyclerOptions.Builder<Messages>()
-                        .setQuery(messagesRef, Messages.class)
-                        .build();
-
-        adapter = new FirebaseRecyclerAdapter<Messages, ChatViewHolder>(options) {
+    private void loadMessages() {
+        messagesRef.addChildEventListener(new ChildEventListener() {
             @Override
-            protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull Messages model) {
-                // Each child node key is the other user's UID
-                String otherUserId = getRef(position).getKey();
-
-                // Fetch the other user's info
-                usersRef.child(otherUserId).get().addOnSuccessListener(snapshot -> {
-                    if (snapshot.exists()) {
-                        User user = snapshot.getValue(User.class);
-                        if (user != null) {
-                            holder.userName.setText(user.getUsername() != null ? user.getUsername() : "Unknown");
-
-                            String image = user.getImage();
-                            if (image != null && !image.isEmpty()) {
-                                Picasso.get()
-                                        .load(image)
-                                        .placeholder(R.drawable.userprofile)
-                                        .into(holder.userImage);
-                            } else {
-                                holder.userImage.setImageResource(R.drawable.userprofile);
-                            }
-                        }
-                    }
-                });
-
-                // Click to open private chat (replace with your actual navigation)
-                holder.itemView.setOnClickListener(v -> {
-                    // Example: If you have a ChatDetailActivity
-                    // Intent intent = new Intent(getActivity(), ChatDetailActivity.class);
-                    // intent.putExtra("otherUserId", otherUserId);
-                    // startActivity(intent);
-
-                    // Or if using Navigation Component + Fragment:
-                    // Bundle bundle = new Bundle();
-                    // bundle.putString("otherUserId", otherUserId);
-                    // NavHostFragment.findNavController(ChatFragment.this)
-                    //     .navigate(R.id.action_chatFragment_to_chatDetailFragment, bundle);
-                });
+            public void onChildAdded(@NonNull DataSnapshot snapshot, String previousChildName) {
+                Messages msg = snapshot.getValue(Messages.class);
+                if (msg != null) {
+                    addMessageToView(msg);
+                }
             }
 
-            @NonNull
-            @Override
-            public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.item_chat_user, parent, false);
-                return new ChatViewHolder(view);
-            }
-        };
-
-        chatList.setAdapter(adapter);
+            @Override public void onChildChanged(@NonNull DataSnapshot snapshot, String previousChildName) {}
+            @Override public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override public void onChildMoved(@NonNull DataSnapshot snapshot, String previousChildName) {}
+            @Override public void onCancelled(@NonNull DatabaseError error) {}
+        });
     }
 
-    // ViewHolder for each chat list item
-    public static class ChatViewHolder extends RecyclerView.ViewHolder {
-        CircleImageView userImage;
-        TextView userName;
+    private void addMessageToView(Messages msg) {
+        // Inflate correct bubble layout
+        int layoutRes = msg.getSender().equals(currentUserId)
+                ? R.layout.item_outgoing_message
+                : R.layout.item_incoming_message;
 
-        public ChatViewHolder(@NonNull View itemView) {
-            super(itemView);
-            userImage = itemView.findViewById(R.id.user_image);
-            userName = itemView.findViewById(R.id.user_name);
-        }
+        View messageView = LayoutInflater.from(getContext()).inflate(layoutRes, chatContainer, false);
+
+        TextView textView = messageView.findViewById(R.id.message_text);
+        textView.setText(msg.getMessage());
+
+        chatContainer.addView(messageView);
+
+        // Proper auto-scroll to bottom
+        chatScroll.post(() -> chatScroll.fullScroll(View.FOCUS_DOWN));
     }
 }
