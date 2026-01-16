@@ -48,6 +48,10 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
 
+    // Image Loading
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
 
@@ -59,6 +63,10 @@ dependencies {
 
     // Firebase Cloud Storage SDK to upload, download and manage binary files (e.g., images)
     implementation("com.google.firebase:firebase-storage")
+
+    // Firebase Realtime Database UI
+    implementation("com.firebaseui:firebase-ui-database:8.0.2")
+    implementation("com.google.firebase:firebase-database")
 
     // Facultatif : Analytics
     implementation("com.google.firebase:firebase-analytics")

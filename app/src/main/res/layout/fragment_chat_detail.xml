@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black_primary"
+    android:paddingBottom="56dp"
     tools:context=".fragment.ChatFragment">
 
-    <!-- Chat Header -->
     <!-- Chat Header -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,18 +18,16 @@
         android:orientation="horizontal"
         android:background="@color/dark_surface_light">
 
-        <!-- Profile Image -->
         <ImageView
             android:id="@+id/imgChatUser"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:src="@drawable/ic_user_24dp"
             android:background="@drawable/userprofile"
-            android:padding="8dp"
+            android:scaleType="centerCrop"
             android:contentDescription="Chat user photo"
             app:tint="@color/primary" />
 
-        <!-- Name + Status -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,9 +51,7 @@
                 android:textColor="@color/primary"
                 android:textSize="12sp" />
         </LinearLayout>
-
     </LinearLayout>
-
 
     <!-- Messages Area -->
     <ScrollView
@@ -72,7 +68,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Incoming message -->
+            <!-- Sample incoming message -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,11 +81,10 @@
                     android:layout_height="wrap_content"
                     android:text="Hey, are you training today?"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:cornerRadius="24dp"/>
+                    android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- Outgoing message -->
+            <!-- Sample outgoing message -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,7 +121,8 @@
             app:boxBackgroundColor="@color/black_primary"
             app:boxStrokeColor="@color/primary"
             app:boxStrokeWidth="2dp"
-            app:boxStrokeWidthFocused="2.5dp">
+            app:boxStrokeWidthFocused="2.5dp"
+            app:hintTextColor="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etMessage"
@@ -135,8 +131,9 @@
                 android:hint="Type a message..."
                 android:textColor="@color/white"
                 android:textColorHint="@color/primary"
-                android:inputType="textMultiLine"
-                android:maxLines="4" />
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLines="4"
+                android:imeOptions="actionSend" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -150,16 +147,13 @@
             android:insetBottom="0dp"
             android:backgroundTint="@color/primary"
             app:cornerRadius="24dp"
-        app:icon="@drawable/text"
-        app:iconGravity="textStart"
-        app:iconPadding="0dp"
-        app:iconSize="24dp"
-        app:iconTint="@color/black_primary" />
-
-
-
-
-
+            app:icon="@drawable/send"
+            app:iconSize="24dp"
+            android:paddingStart="11dp"
+            android:paddingTop="9dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="6dp"
+            app:iconTint="@color/black_primary" />
     </LinearLayout>
 
 </LinearLayout>
