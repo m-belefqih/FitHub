@@ -50,69 +50,145 @@ FitHub is developed using **Java for Android** and follows the **MVVM architectu
 
 ---
 
-## à noter que
-nous avons utilisé Google Drive au lieu de Firebase Storage pour le partage des images
-car Firebase Storage nécessite une carte bancaire pour l'authentification
+## ⚙️ Installation
+
+### Prerequisites
+
+- [Android Studio](https://developer.android.com/studio) (latest stable version recommended)
+- **JDK 11** or higher (bundled with Android Studio)
+- Android SDK **API 36** (compile) — the app runs on **Android 6.0 (API 23)** and above
+- A Firebase project configured as described in [Firebase Setup](#-firebase-setup)
+
+### Steps
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/m-belefqih/FitHub.git
+   cd FitHub
+   ```
+
+2. **Open the project in Android Studio**
+   - **File → Open** and select the `FitHub` folder.
+
+3. **Add the Firebase configuration file**
+   - Copy your `google-services.json` into the `app/` folder.
+
+4. **Sync Gradle**
+   - Click **Sync Now** in the banner that appears, or
+   - Go to **File → Sync Project with Gradle Files**.
+
+5. **Run the application**
+   - Select an emulator or connect a physical device (with **USB debugging** enabled).
+   - Click **Run ▶** (or press `Shift + F10`).
+
+6. **Create an account**
+   - Register with a valid email address, then confirm it using the verification link before logging in.
 
 ---
 
-## 📱 Main Features
+## 🔥 Firebase Setup
 
-✅ Login & Register  
-✅ Secure authentication with Firebase  
-✅ User profile (height, weight)  
-✅ Create posts (Reddit-style)  
-✅ Public feed  
-✅ Material Design interface  
-✅ Real-time cloud database (Firestore)  
+> [!IMPORTANT]
+> The original Firebase project was created in **test mode**, whose security rules expire automatically after **30 days**.
+> Since then, the original backend no longer accepts requests, so **you need to connect the app to your own Firebase project** to run it.
+> The `google-services.json` file is **not included** in this repository for security reasons.
+
+### Firebase services used
+
+| Service | Used for |
+| ------- | -------- |
+| **Authentication** (Email/Password) | Login, registration and email verification |
+| **Cloud Firestore** | Users, posts, comments and nutrition data |
+| **Realtime Database** | Real-time chat between members |
+
+> [!NOTE]
+> Images are hosted on **Google Drive** instead of Firebase Storage (see the **Project Status** section below), so Cloud Storage is not required.
+
+### Step 1 — Create a Firebase project
+
+1. Open the [Firebase Console](https://console.firebase.google.com/) and sign in with your Google account.
+2. Click **Create a project** (or **Add project**).
+3. Enter a project name (e.g. `FitHub`) and follow the wizard.
+   - Google Analytics is optional.
+
+### Step 2 — Register the Android app
+
+1. On the project overview page, click the **Android (🤖) icon**.
+2. Fill in the form:
+
+   | Field | Value |
+   | ----- | ----- |
+   | Android package name | `com.example.fithub` |
+   | App nickname | `FitHub` |
+
+   > ⚠️ The package name **must match exactly** `com.example.fithub`, otherwise the build will fail.
+
+3. Click **Register app**.
+4. Download the generated **`google-services.json`** file.
+5. Move it into the `app/` folder of the project:
+
+   ```text
+   FitHub/
+   ├── app/
+   │   ├── google-services.json   ← here
+   │   ├── build.gradle.kts
+   │   └── src/
+   ├── build.gradle.kts
+   └── settings.gradle.kts
+   ```
+
+6. Skip the remaining SDK steps: the Firebase dependencies are already configured in `app/build.gradle.kts`.
+
+### Step 3 — Enable the Firebase services
+
+- **Authentication**
+  1. Go to **Build → Authentication → Get started**.
+  2. In the **Sign-in method** tab, enable **Email/Password**.
+- **Cloud Firestore**
+  1. Go to **Build → Firestore Database → Create database**.
+  2. Choose a location close to your users.
+  3. Start in **production mode** (rules are configured in Step 4).
+- **Realtime Database**
+  1. Go to **Build → Realtime Database → Create database**.
+  2. Choose a location and start in **locked mode**.
+
+### Step 4 — Configure security rules
+
+To avoid the 30-day expiration of test mode, use rules that only allow **authenticated users**.
+
+- **Firestore** → *Rules* tab:
+
+  ```js
+  rules_version = '2';
+  service cloud.firestore {
+    match /databases/{database}/documents {
+      match /{document=**} {
+        allow read, write: if request.auth != null;
+      }
+    }
+  }
+  ```
+
+- **Realtime Database** → *Rules* tab:
+
+  ```json
+  {
+    "rules": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+  ```
+
+Click **Publish** after each change.
+
+> [!TIP]
+> These rules are a good starting point for development. For a public release, restrict access per collection (e.g. a user can only edit their own profile).
 
 ---
 
-## 🔒 Important – Firebase Security
-
-The `google-services.json` file is **not included** in this repository for security reasons.
-
-Each team member must:
-
-1. Go to the **Firebase main page**
-2. Click on the **Android (🤖) icon**
-3. Fill in:
-
-| Field                | Value               |
-| -------------------- | ------------------- |
-| Android package name | `com.example.fithub` |
-| App nickname         | FitHub               |
-
-4. Click on **Register App**
-5. Download the file:
-```bash
-google-services.json
-```
-6. Copy thif file into:
-app/ (the main folder of your Android project)
-
----
-
-## 🚀 Installation & Setup
-
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/FitHub.git
-````
-
-2. Open the project in Android Studio
-
-3. Add your `google-services.json` file into the `/app` folder
-
-4. Sync the project:
-  File → Sync Project with Gradle Files
-
-
-5. Run the application on an emulator or physical device
-
----
-
-## 👥 Team
+## Team 
 
 Project developed for the **Mobile Programming** module
 University / School: Faculty of Science and Technology in Marrakech (FSTG)
@@ -134,37 +210,13 @@ Team members:
 
 ---
 
-## License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-Check this out : 
-
-https://github.com/magicuidesign/magicui/tree/main
-
-https://github.com/achrafaitibba/PureFeed-Extension/tree/main
-
-https://github.com/MedGm/OllamaGUI
-
 ## ⚠️ Project Status
 
-7itach 3adna wa7d mochkil f payments dyal kda kda , dirna les images f google drive
-
-This project is currently under development and may contain bugs or incomplete features.
-Contributions and improvements are welcome.
+7itach 3adna wa7d mochkil f payments dyal kda kda , dirna stockage dyal les images f google drive
 
 We use Google Cloud instead of Firebase storage because we had a problem in the payment so we us it instead
 
+nous avons utilisé Google Drive au lieu de Firebase Storage pour le partage des images car Firebase Storage nécessite une carte bancaire pour l'authentification
+
 ---
-
-Déployer l’application sur le Play Store :
-
-Pour cela, vous pouvez suivre ce tutoriel (https://developer.android.com/studio/publish?hl=fr). Toutefois, sachez que pour pouvoir déployer une application sur le Play Store, 
-il faut disposer d’un compte Google Play Developer, et que cela coûte 15 $.
-
-
-Déployer l’application sur le Firebase Distribution:
-
-Si vous avez simplement besoin de déployer votre application sur quelques appareils, par exemple dans votre entourage, sans passer par le Play Store, 
-Firebase Distribution (https://firebase.google.com/docs/app-distribution?hl=fr) vous permet de partager gratuitement votre application.
 
