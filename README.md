@@ -44,12 +44,6 @@ FitHub is developed using **Java for Android** and follows the **MVVM architectu
 
 ---
 
-## 🗂️ MVVM Architecture
-
-<img src="images/mvvm-architecture.png" alt="MVVM Structure"/>
-
----
-
 ## ⚙️ Installation
 
 ### Prerequisites
@@ -103,7 +97,7 @@ FitHub is developed using **Java for Android** and follows the **MVVM architectu
 | **Realtime Database** | Real-time chat between members |
 
 > [!NOTE]
-> Images are hosted on **Google Drive** instead of Firebase Storage (see the **Project Status** section below), so Cloud Storage is not required.
+> Images are hosted on **Google Drive** instead of Firebase Storage, so Cloud Storage is not required.
 
 ### Step 1 — Create a Firebase project
 
@@ -188,6 +182,19 @@ Click **Publish** after each change.
 
 ---
 
+## MVVM Architecture
+
+<img src="images/mvvm-architecture.png" alt="MVVM Structure"/>
+
+---
+
+
+## 📸 Screenshots
+
+<img src="images/application.gif" alt="FitHub Logo" width="1000"/>
+
+---
+
 ## Team 
 
 Project developed for the **Mobile Programming** module
@@ -204,19 +211,7 @@ Team members:
 
 ---
 
-## 📸 Screenshots
+## Contributing
 
-<img src="images/application.gif" alt="FitHub Logo" width="1000"/>
-
----
-
-## ⚠️ Project Status
-
-7itach 3adna wa7d mochkil f payments dyal kda kda , dirna stockage dyal les images f google drive
-
-We use Google Cloud instead of Firebase storage because we had a problem in the payment so we us it instead
-
-nous avons utilisé Google Drive au lieu de Firebase Storage pour le partage des images car Firebase Storage nécessite une carte bancaire pour l'authentification
-
----
-
+This project is currently under development and may contain bugs or incomplete features.
+Contributions and improvements are welcome.
