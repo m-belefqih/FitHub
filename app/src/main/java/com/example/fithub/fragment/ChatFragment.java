@@ -81,6 +81,9 @@ public class ChatFragment extends Fragment {
             }
         });
 
+        // Keep the message input bar above the bottom navigation menu
+        applyBottomNavPadding(view);
+
         // Send message
         btnSend.setOnClickListener(v -> sendMessage());
 
@@ -88,6 +91,39 @@ public class ChatFragment extends Fragment {
         loadMessages();
 
         return view;
+    }
+
+    /**
+     * The BottomNavigationView in MainActivity overlays the fragment container,
+     * so we pad the root by its real measured height (includes system nav bar insets).
+     */
+    private void applyBottomNavPadding(View root) {
+        View bottomNav = requireActivity().findViewById(R.id.bottomNavigationView);
+        if (bottomNav == null) return;
+
+        // Runs on every layout pass of the bottom nav (e.g. insets/rotation changes)
+        View.OnLayoutChangeListener listener = (v, l, t, r, b, ol, ot, or, ob) -> {
+            int height = v.getHeight();
+            if (height > 0 && root.getPaddingBottom() != height) {
+                root.setPadding(root.getPaddingLeft(), root.getPaddingTop(),
+                        root.getPaddingRight(), height);
+            }
+        };
+        bottomNav.addOnLayoutChangeListener(listener);
+
+        // Apply immediately if already laid out
+        if (bottomNav.getHeight() > 0) {
+            root.setPadding(root.getPaddingLeft(), root.getPaddingTop(),
+                    root.getPaddingRight(), bottomNav.getHeight());
+        }
+
+        // Avoid leaking the fragment view through the activity's bottom nav
+        root.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override public void onViewAttachedToWindow(@NonNull View v) {}
+            @Override public void onViewDetachedFromWindow(@NonNull View v) {
+                bottomNav.removeOnLayoutChangeListener(listener);
+            }
+        });
     }
 
     private void sendMessage() {

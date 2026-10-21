@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black_primary"
-    android:paddingBottom="56dp"
+    android:paddingBottom="80dp"
     tools:context=".fragment.ChatFragment">
 
     <!-- Chat Header -->
@@ -22,7 +22,6 @@
             android:id="@+id/imgChatUser"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:src="@drawable/ic_user_24dp"
             android:background="@drawable/userprofile"
             android:scaleType="centerCrop"
             android:contentDescription="Chat user photo"
@@ -72,7 +71,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/dark_surface_light"
+                android:background="@drawable/bg_message_incoming"
                 android:padding="12dp"
                 android:layout_marginBottom="10dp">
 
@@ -89,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:background="@color/primary"
+                android:background="@drawable/bg_message_outgoing"
                 android:padding="12dp"
                 android:layout_marginBottom="10dp">
 
@@ -119,6 +118,10 @@
             android:layout_weight="1"
             style="@style/CustomFloatingHint"
             app:boxBackgroundColor="@color/black_primary"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
             app:boxStrokeColor="@color/primary"
             app:boxStrokeWidth="2dp"
             app:boxStrokeWidthFocused="2.5dp"
