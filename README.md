@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://laravel.com" target="_blank">
-    <img src="images/logo.png" width="400" alt="FitHub Logo">
-  </a>
+  <img src="images/logo.png" width="400" alt="FitHub Logo">
 </p>
 
 <p align="center">
@@ -41,6 +39,10 @@ in **fitness and wellness applications**, such as:
 
 FitHub is developed using **Java for Android** and follows the **MVVM architecture** to ensure **scalability**,  
 **maintainability**, and **clean separation of concerns**, providing a **smooth and reliable user experience**.
+
+<p align="center">
+  <img src="images/application.gif" alt="FitHub application">
+</p>
 
 ---
 
