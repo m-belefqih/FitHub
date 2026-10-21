@@ -193,7 +193,14 @@ Click **Publish** after each change.
 
 ## 📸 Screenshots
 
-<img src="images/application.gif" alt="FitHub Logo" width="1000"/>
+<img src="images/Login.png" alt="Login" width="400"/> <img src="images/Registration.png" alt="Registration" width="400"/>
+<img src="images/Email%20verification.png" alt="Email verification" width="400"/> <img src="images/Home.png" alt="Home" width="400"/>
+<img src="images/Navigation_Bar_Menu.png" alt="Navigation bar menu" width="400"/> <img src="images/Muscles.png" alt="Muscles" width="400"/>
+<img src="images/Exercises.png" alt="Exercises" width="400"/> <img src="images/Bench_press.png" alt="Bench press" width="400"/>
+<img src="images/Full_Body.png" alt="Full body workout" width="400"/> <img src="images/Feed.png" alt="Feed" width="400"/>
+<img src="images/Chat.png" alt="Chat" width="400"/>
+<img src="images/Profile.png" alt="Profile" width="400"/>
+
 
 ---
 
