@@ -193,21 +193,33 @@ Click **Publish** after each change.
 
 ## 📸 Screenshots
 
-<img src="images/Login.png" alt="Login" width="250"/>
-<img src="images/Registration.png" alt="Registration" width="250"/>
-<img src="images/Email%20verification.png" alt="Email verification" width="250"/>
-<img src="images/Email%20verification%201.png" alt="Email verification" width="250"/>
-<img src="images/Navigation_Bar_Menu.png" alt="Navigation bar menu" width="250"/>
-<img src="images/Home.png" alt="Home" width="250"/>
-<img src="images/Muscles.png" alt="Muscles" width="250"/>
-<img src="images/Exercises.png" alt="Exercises" width="250"/>
-<img src="images/Bench_press.png" alt="Bench press" width="250"/>
-<img src="images/Full_Body.png" alt="Full body workout" width="250"/>
-<img src="images/Workouts.png" alt="Workouts" width="250"/>
-<img src="images/Feed.png" alt="Feed" width="250"/>
-<img src="images/Chat.png" alt="Chat" width="250"/>
-<img src="images/Food%20calories.png" alt="Food calories" width="250"/>
-<img src="images/Profile.png" alt="Profile" width="250"/>
+<table width="100%">
+  <tr>
+    <td width="33%"><img src="images/Login.png" alt="Login" width="100%"/></td>
+    <td width="33%"><img src="images/Registration.png" alt="Registration" width="100%"/></td>
+    <td width="33%"><img src="images/Email%20verification.png" alt="Email verification" width="100%"/></td>
+  </tr>
+  <tr>
+    <td width="33%"><img src="images/Email%20verification%201.png" alt="Email verification" width="100%"/></td>
+    <td width="33%"><img src="images/Navigation_Bar_Menu.png" alt="Navigation bar menu" width="100%"/></td>
+    <td width="33%"><img src="images/Home.png" alt="Home" width="100%"/></td>
+  </tr>
+  <tr>
+    <td width="33%"><img src="images/Muscles.png" alt="Muscles" width="100%"/></td>
+    <td width="33%"><img src="images/Exercises.png" alt="Exercises" width="100%"/></td>
+    <td width="33%"><img src="images/Bench_press.png" alt="Bench press" width="100%"/></td>
+  </tr>
+  <tr>
+    <td width="33%"><img src="images/Full_Body.png" alt="Full body workout" width="100%"/></td>
+    <td width="33%"><img src="images/Workouts.png" alt="Workouts" width="100%"/></td>
+    <td width="33%"><img src="images/Feed.png" alt="Feed" width="100%"/></td>
+  </tr>
+  <tr>
+    <td width="33%"><img src="images/Chat.png" alt="Chat" width="100%"/></td>
+    <td width="33%"><img src="images/Food%20calories.png" alt="Food calories" width="100%"/></td>
+    <td width="33%"><img src="images/Profile.png" alt="Profile" width="100%"/></td>
+  </tr>
+</table>
 
 
 ---
